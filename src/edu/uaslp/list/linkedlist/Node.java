@@ -4,4 +4,5 @@ package edu.uaslp.list.linkedlist;
      int data;
      Node next;
      Node previous;
-}
+
+  }

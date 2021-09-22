@@ -1,13 +1,14 @@
 package edu.uaslp;
 
+import edu.uaslp.list.arraylist.Arraylist;
 import edu.uaslp.list.linkedlist.LinkedList;
 import edu.uaslp.list.linkedlist.Node;
 
 public class Main {
 
     public static void main(String[] args) {
-        LinkedList books=new LinkedList();
-        LinkedList students=new LinkedList();
+        Arraylist books=new Arraylist();
+        Arraylist students=new Arraylist();
 
         books.add(10);
         books.add(15);
@@ -21,12 +22,16 @@ public class Main {
         students.add(8);
         students.add(67);
 
+        books.insert(80,2);
+
+        books.delete(0);
+
         System.out.println("books size: "+books.getSize());
         System.out.println("students size: "+students.getSize());
 
         System.out.println("student position 1: "+students.getAt(0));
         System.out.println("book position 5: "+books.getAt(5));
 
-        Node node=new Node();
+        books.print();
     }
 }
