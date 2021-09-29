@@ -1,7 +1,7 @@
 package edu.uaslp.list.linkedlist;
 
-  public class Node {
-     int data;
+  public class Node<T> {
+     T data;
      Node next;
      Node previous;
 

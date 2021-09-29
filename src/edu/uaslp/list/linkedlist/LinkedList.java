@@ -1,12 +1,14 @@
 package edu.uaslp.list.linkedlist;
 
-public class LinkedList {
-    private Node head;
-    private Node tail;
+import edu.uaslp.list.List;
+
+public class LinkedList<H> implements List<H> {
+    private Node<H> head;
+    private Node<H> tail;
     private int size;
 
-    public void add(int data){
-        Node node=new Node();
+    public void add(H data){
+        Node<H> node=new Node<>();
         node.data=data;
 
         if(head==null){
@@ -27,20 +29,20 @@ public class LinkedList {
     }
 
 
-    public int getAt(int index){
+    public H getAt(int index){
         int counter=0;
-        Node it=head;
+        Node<H> it=head;
 
         while(counter<index&&it!=null){
          counter++;
          it=it.next;
         }
-        return head==null?0:it.data;
+        return it==null?null:it.data;
     }
 
-    public void insert(int data, int index){
+    public void insert(H data, int index){
         int counter=0;
-        Node it=head;
+        Node<H> it=head;
         if(index<0||index>=size) {
             return;
         }
@@ -52,7 +54,7 @@ public class LinkedList {
             it=it.next;
             counter++;
         }
-        Node node=new Node();
+        Node<H> node=new Node<>();
 
         node.data=data;
         node.next=it;
@@ -64,11 +66,12 @@ public class LinkedList {
             it.previous.next=node;
         }
         it.previous=node;
+        size++;
     }
 
     public void delete(int index) {
         int counter = 0;
-        Node it = head;
+        Node<H> it = head;
         if (index < 0 || index >= size) {
             return;
         }
@@ -90,7 +93,7 @@ public class LinkedList {
     }
 
          public void print(){
-             Node it=head;
+             Node<H> it=head;
              while(it!=null){
                  System.out.println(it.data);
                  it=it.next;

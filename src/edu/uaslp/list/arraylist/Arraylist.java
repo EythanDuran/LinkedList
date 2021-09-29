@@ -1,59 +1,65 @@
 package edu.uaslp.list.arraylist;
-import edu.uaslp.list.linkedlist.Node;
 
-import java.util.Arrays;
+import edu.uaslp.list.List;
 
-public class Arraylist<array>{
+public class Arraylist<T> implements List<T>{
+
     private int size;
     private static final int default_capacity=6;
-    private Object Array[];
+    private Object[] Array;
 
     public void MyArray() {
-      Array=new Object[default_capacity];
+
+        Array=new Object[default_capacity];
     }
 
-    public void add(array Ar){
-        if(size==Array.length) {
+    public void add(T Ar){
+        if(size>=Array.length) {
             growList();
         }
-        Array[size++]=Ar;
+        Array[size]=Ar;
+        size++;
     }
 
     private void growList() {
-        int newSize = Array.length * 2;
-        Array = Arrays.copyOf(Array, newSize);
+        Object[] newSize =new Object [Array.length * 2];
+        System.arraycopy(Array,0,newSize,0,Array.length);
+        Array=newSize;
     }
 
     public int getSize(){
         return  size;
     }
 
-    public int getAt(Object array){
-        if (array == null){
-            for (int i=0; i<size;i++)
-                if (Array[i]==null)
-                    return i;
-        }else {
-            for (int i = 0; i < size; i++)
-                if (array.equals(Array[i]))
-                    return i;
+    public T getAt(int index){
+        if(index<0||index>size){
+            return null;
         }
-        return -1;
+        return (T)Array[index];
     }
 
-    public void insert(array data, int index){
-        System.arraycopy(data, index, data, index + 1, size - index);
-        Array[index] = data;
-        size++;
+    public void insert(T data, int index){
+        if(index<0||index>size){
+            return;
+        }
+        if(size>=Array.length){
+            growList();
+        }
+        if(size-index>=0) {
+            System.arraycopy(Array, index, Array, index + 1, size - index);
+            Array[index] = data;
+            size++;
+        }
     }
 
-    public array delete(int index) {
-        array ValuetoDelete = Array(index);
-        int numMoved = size-index-1;
-        if (numMoved > 0)
-            System.arraycopy(Array, index+1, Array, index, numMoved);
-        Array[--size] = null;
-        return ValuetoDelete;
+    public void delete(int index) {
+        if(index<0||index>size){
+            return;
+        }
+        int deleted = size-1-index;
+        if (deleted >= 0)
+            System.arraycopy(Array, index+1, Array, index, deleted);
+        size--;
     }
 
     public void print(){

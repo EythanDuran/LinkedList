@@ -1,16 +1,17 @@
 package edu.uaslp;
 
+import edu.uaslp.list.List;
 import edu.uaslp.list.arraylist.Arraylist;
 import edu.uaslp.list.linkedlist.LinkedList;
-import edu.uaslp.list.linkedlist.Node;
 
 public class Main {
 
     public static void main(String[] args) {
-        Arraylist books=new Arraylist();
-        Arraylist students=new Arraylist();
+        List<Integer> books=new LinkedList<>();
+        List<Integer> students=new LinkedList<>();
 
-        books.add(10);
+
+        books.add(0);
         books.add(15);
         books.add(19);
         books.add(30);
