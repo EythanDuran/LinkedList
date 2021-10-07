@@ -1,15 +1,17 @@
 package edu.uaslp.list;
 
 public interface List<T> { //todos son public abstract
-  void add(T data);
+    void add(T data);
 
-  int getSize();
+    int getSize();
 
- T getAt(int index);
+    T getAt(int index);
 
- void delete(int index);
+    void delete(int index);
 
- void insert(T data, int index);
+    void insert(T data, int index);
 
- void print();
+    Iterator<T>getIterator();
+
+    void print();
 }
