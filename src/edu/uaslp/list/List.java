@@ -12,6 +12,4 @@ public interface List<T> { //todos son public abstract
     void insert(T data, int index);
 
     Iterator<T>getIterator();
-
-    void print();
 }

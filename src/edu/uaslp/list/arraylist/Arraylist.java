@@ -9,11 +9,29 @@ public class Arraylist<T> implements List<T> {
     private static final int default_capacity = 6;
     private Object[] Array;
 
+    //
+
+    private class ArrayListIterator implements Iterator<T> {
+
+        private int currentIndex = 0;
+
+        @Override
+        public T next() {
+            return (T)Array[currentIndex++];//return array.getAt(currentIndex++);
+        }
+
+        @Override
+        public boolean hasnext() {
+            return currentIndex < getSize();
+        }
+    }
 
     @Override
     public Iterator<T> getIterator() {
-        return new ArrayListIterator<>(this); //sobre que objeto vamos a iterar
+        return new ArrayListIterator(); //sobre que objeto vamos a iterar libros o alumnos, (this)
     }
+
+    //
 
     public Arraylist() {
         Array = new Object[default_capacity];
@@ -68,11 +86,7 @@ public class Arraylist<T> implements List<T> {
             System.arraycopy(Array, index + 1, Array, index, deleted);
         size--;
     }
-
-    public void print() {
-        for (int i = 0; i < size; i++)
-            System.out.println(Array[i]);
-    }
 }
+
 
 

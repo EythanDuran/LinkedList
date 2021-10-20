@@ -8,6 +8,30 @@ public class LinkedList<H> implements List<H> {
     private Node<H> tail;
     private int size;
 
+    public class LinkedListIterator implements Iterator<H> {
+        private Node<H> current;
+
+        LinkedListIterator() {
+            current = head;
+        }
+
+        @Override
+        public H next() {
+            H data = current.data;
+            current = current.next;
+            return data;
+        }
+
+        @Override
+        public boolean hasnext() {
+            return current != null;
+        }
+    }
+
+    public Iterator<H> getIterator() {
+        return new LinkedListIterator();
+    }
+
 
     public void add(H data) {
         Node<H> node = new Node<>();
@@ -46,7 +70,7 @@ public class LinkedList<H> implements List<H> {
     public void insert(H data, int index) {
         int counter = 0;
         Node<H> it = head;
-        if (index < 0 || index >= size) {
+        if (index < 0 || index > size) {
             return;
         }
         if (index == size) {
@@ -85,7 +109,7 @@ public class LinkedList<H> implements List<H> {
         if (it.previous == null) {
             head = it.next;
         } else {
-            it.previous.next = head;
+            it.previous.next = it.next;
         }
         if (it.next == null) {
             tail = it.previous;
@@ -93,18 +117,6 @@ public class LinkedList<H> implements List<H> {
             it.next.previous = it.previous;
         }
         size--;
-    }
-
-    public void print() {
-        Node<H> it = head;
-        while (it != null) {
-            System.out.println(it.data);
-            it = it.next;
-        }
-    }
-
-    public Iterator<H> getIterator() {
-        return new LinkedListIterator<>(head);
     }
 }
 
