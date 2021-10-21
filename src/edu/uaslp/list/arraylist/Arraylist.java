@@ -2,11 +2,12 @@ package edu.uaslp.list.arraylist;
 
 import edu.uaslp.list.Iterator;
 import edu.uaslp.list.List;
+import edu.uaslp.list.linkedlist.LinkedList;
 
 public class Arraylist<T> implements List<T> {
 
     private int size;
-    private static final int default_capacity = 6;
+    private static final int default_capacity = 3;
     private Object[] Array;
 
     //
@@ -26,14 +27,17 @@ public class Arraylist<T> implements List<T> {
         }
     }
 
+
     @Override
     public Iterator<T> getIterator() {
         return new ArrayListIterator(); //sobre que objeto vamos a iterar libros o alumnos, (this)
     }
 
+
     //
 
     public Arraylist() {
+
         Array = new Object[default_capacity];
     }
 
@@ -45,7 +49,7 @@ public class Arraylist<T> implements List<T> {
         size++;
     }
 
-    private void growList() {
+    public void growList() {
         Object[] newSize = new Object[Array.length * 2];
         System.arraycopy(Array, 0, newSize, 0, Array.length);
         Array = newSize;

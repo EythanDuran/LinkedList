@@ -8,7 +8,7 @@ public class LinkedList<H> implements List<H> {
     private Node<H> tail;
     private int size;
 
-    public class LinkedListIterator implements Iterator<H> {
+    private class LinkedListIterator implements Iterator<H> {
         private Node<H> current;
 
         LinkedListIterator() {
@@ -27,6 +27,7 @@ public class LinkedList<H> implements List<H> {
             return current != null;
         }
     }
+
 
     public Iterator<H> getIterator() {
         return new LinkedListIterator();

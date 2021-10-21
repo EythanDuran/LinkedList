@@ -265,7 +265,6 @@ public class LinkedListTest {
         Iterator<String> it=list.getIterator();
 
         //then:
-        Assertions.assertTrue(it instanceof LinkedList.LinkedListIterator);
 
         Assertions.assertTrue(it.hasnext());
         Assertions.assertEquals("Primero", it.next());
